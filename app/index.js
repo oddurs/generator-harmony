@@ -70,6 +70,40 @@ module.exports = yeoman.generators.Base.extend({
     }.bind(this));
   },
 
+  licensePrompt: function () {
+    var done = this.async();
+
+    // List of possible licenses
+    var licenses = [
+      { name: 'Apache 2.0', value: 'apache' },
+      { name: 'MIT', value: 'mit' },
+      { name: 'Unlicense', value: 'unlicense' },
+      { name: 'FreeBSD', value: 'freebsd' },
+      { name: 'NewBSD', value: 'newbsd' },
+      { name: 'Internet Systems Consortium (ISC)', value: 'isc' },
+      { name: 'No License (Copyrighted)', value: 'nolicense' }
+    ];
+
+    // // Prompts for licenses
+    var prompts = [{
+      type: 'list',
+      name: 'license',
+      message: 'What license do you want to use?:',
+      choices: licenses
+    }];
+
+    this.prompt(prompts, function(props) {
+      var filename = props.license + '.md';
+
+      // data for template
+      this.year = (new Date()).getFullYear();
+      this.name = props.name;
+
+      this.template(filename, 'LICENSE');
+      done();
+    }.bind(this));
+  },
+
   writing: {
     app: function () {
       this.fs.copy(
