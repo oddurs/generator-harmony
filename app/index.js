@@ -50,7 +50,7 @@ module.exports = yeoman.generators.Base.extend({
     // Prompts for User and Repo
     var prompts = [{
       type    : 'input',
-      name    : 'fullName',
+      name    : 'name',
       message : 'What is your full name?',
       default : 'John Smith'
     }, {
@@ -71,10 +71,10 @@ module.exports = yeoman.generators.Base.extend({
     }];
 
     this.prompt(prompts, function(props) {
-      this.fullName       = props.fullName;
-      this.gitHubUserName = props.gitHubUserName;
-      this.gitHubRepoName = props.gitHubRepoName;
-      this.email          = props.email;
+      this.name  = props.name;
+      this.user  = props.user;
+      this.repo  = props.repo;
+      this.email = props.email;
       done();
     }.bind(this));
   },
@@ -96,8 +96,8 @@ module.exports = yeoman.generators.Base.extend({
     }];
 
     this.prompt(prompts, function(props) {
-      this.isCoverallsEnabled = props.isCoverallsEnabled;
-      this.isTravisEnabled    = props.isTravisEnabled;
+      this.coverall = props.coverall;
+      this.travis   = props.travis;
 
       done();
     }.bind(this));
@@ -160,7 +160,7 @@ module.exports = yeoman.generators.Base.extend({
 
     licenseFiles: function() {
       var context = {
-        name : this.fullName,
+        name : this.name,
         year : this.year
       };
       this.template('licenses/' + this.license + '.txt', 'LICENSE.txt', context);
@@ -168,12 +168,12 @@ module.exports = yeoman.generators.Base.extend({
 
     readmeFiles: function() {
       var context = {
-        name     : this.fullName,
-        user     : this.gitHubUserName,
-        repo     : this.gitHubRepoName,
+        name     : this.name,
+        user     : this.user,
+        repo     : this.repo,
         year     : this.year,
-        coverall : this.isCoverallsEnabled,
-        travis   : this.isTravisEnabled,
+        coverall : this.coverall,
+        travis   : this.travis,
         license  : this.license
       };
       this.template('_README.md', 'README.md', context);
