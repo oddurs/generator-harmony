@@ -126,7 +126,13 @@ module.exports = yeoman.generators.Base.extend({
     this.prompt(prompts, function(props) {
       this.year    = (new Date()).getFullYear();
       this.license = props.license;
-
+      this.licenseName = function () {
+        for (var i = 0; i < licenses.length; i++) {
+          if (this.license === licenses[i].value) {
+            return licenses[i].name;
+          }
+        }
+      }
       done();
     }.bind(this));
   },
@@ -156,31 +162,27 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('_CHANGELOG.md'),
         this.destinationPath('CHANGELOG.md')
       );
-      this.fs.copy(
-        this.templatePath('_CONTRIBUTING.md'),
-        this.destinationPath('CONTRIBUTING.md')
-      );
     },
 
-    licenseFiles: function() {
+    generateFiles: function() {
       var context = {
-        name : this.name,
-        year : this.year
+        name        : this.name,
+        user        : this.user,
+        repo        : this.repo,
+        year        : this.year,
+        coverall    : this.coverall,
+        travis      : this.travis,
+        license     : this.license,
+        licenseName : this.licenseName()
       };
+      // Generate license file
       this.template('licenses/' + this.license + '.txt', 'LICENSE.txt', context);
-    },
 
-    readmeFiles: function() {
-      var context = {
-        name     : this.name,
-        user     : this.user,
-        repo     : this.repo,
-        year     : this.year,
-        coverall : this.coverall,
-        travis   : this.travis,
-        license  : this.license
-      };
+      // Generate readme
       this.template('_README.md', 'README.md', context);
+
+      // Generate contribution guide
+      this.template('_CONTRIBUTING.md', 'CONTRIBUTING.md', context);
     },
   },
 

@@ -36,7 +36,7 @@ mkdir my-new-project && cd $_
 
 Run `yo angular-bedrock`, optionally passing an app name:
 ```
-yo angular-fullstack [app-name]
+yo angular-bedrock [app-name]
 ```
 
 ## Options
