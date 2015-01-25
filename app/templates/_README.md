@@ -17,13 +17,13 @@
 ## Installation
 [[Back To Top]](#table-of-contents)
 
-- via npm
+Install with `npm`
 
 ```shell
 npm install <%= repo %>
 ```
 
-- Manually
+Manual installation
 
 ```shell
 git clone git://github.com/<%= user %>/<%= repo %>.git
@@ -108,11 +108,16 @@ Available commands are:
 ## Legal
 [[Back To Top]](#table-of-contents)
 
-Copyright Â© <%= year %> <%= user %> <aponxi@weaponxi.com>
-
-This software is licensed under [<%= license %>](/LICENSE.txt).
+This software is licensed under the [<%= licenseName %> license](/LICENSE.txt).
 
 ## Release History
 [[Back To Top]](#table-of-contents)
 
 You can find [all the changelogs here](/CHANGELOGS.md).
+
+## Contributors
+[[Back To Top]](#table-of-contents)
+
+- [<%= name %>](http://github.com/<%= user %>) <<%= email %>>
+
+If you want to contribute to this project, please see the [contribution page](/CONTRIBUTING.md).

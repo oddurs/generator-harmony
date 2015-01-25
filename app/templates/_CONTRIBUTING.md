@@ -19,40 +19,11 @@ We only accept issues that are icon requests, bug reports, or feature requests. 
 - `gh-pages` is the hosted docs (not to be used for pull requests)
 - `*-wip` branches are the official work in progress branches for the next releases. All pull requests should be submitted against the appropriate branch
 
-## Notes on the repo
-
-As of v3.2.0, Font Awesome's CSS, LESS, SCSS, and documentation are all powered by Jekyll templates and built before each commit and release.
-- `_config.yml` - much of the site is driven off variables from this file, including Font Awesome and Bootstrap versions
-- `src/` - All edits to documentation, LESS, SCSS, and CSS should be made to files and templates in this directory
-- `src/icons.yml` - all LESS, SCSS, and CSS icon definitions are driven off this single file
-
 ## Pull requests
 
-- At the moment we are not accepting pull requests containing icons
 - Submit all pull requests against the appropriate `*-wip` branch for easier merging
-- Any changes to the docs must be made to the Liquid templates in the `src` directory
-- Any changes to the styles must be made to the .less and .scss files in the `src` directory
-- If modifying the .less and .scss files, always recompile and commit the compiled files
 - Try not to pollute your pull request with unintended changes--keep them simple and small
-- Try to share which browsers your code has been tested in before submitting a pull request
-
-## Coding standards: HTML
-
-- Two spaces for indentation, never tabs
-- Double quotes only, never single quotes
-- Always use proper indentation
-- Use tags and elements appropriate for an HTML5 doctype (e.g., self-closing tags)
-
-## Coding standards: CSS
-
-- Adhere to the [Recess CSS property order](http://markdotto.com/2011/11/29/css-property-order/)
-- Multiple-line approach (one property and value per line)
-- Always a space after a property's colon (.e.g, `display: block;` and not `display:block;`)
-- End all lines with a semi-colon
-- For multiple, comma-separated selectors, place each selector on it's own line
-- Attribute selectors, like `input[type="text"]` should always wrap the attribute's value in double quotes, for consistency and safety (see this [blog post on unquoted attribute values](http://mathiasbynens.be/notes/unquoted-attribute-values) that can lead to XSS attacks)
 
 ## License
 
-By contributing your code, you agree to license your contribution under the terms of the <%= licenseName %> license:
-- http://opensource.org/licenses/mit-license.html
+By contributing your code, you agree to license your contribution under the terms of the [<%= licenseName %>](/LICENSE.txt) license:
