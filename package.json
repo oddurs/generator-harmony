@@ -20,7 +20,15 @@
     "app"
   ],
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "yeoman",
+    "yo",
+    "generator",
+    "github",
+    "changelog",
+    "project",
+    "license",
+    "repository"
   ],
   "dependencies": {
     "yeoman-generator": "^0.18.0",
