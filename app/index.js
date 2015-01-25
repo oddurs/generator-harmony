@@ -151,9 +151,21 @@ module.exports = yeoman.generators.Base.extend({
       var context = {
         name: this.fullName,
         year: this.year
-      }
-      this.template(this.license + '.txt', 'LICENSE.txt', context);
-    }
+      };
+      this.template('licenses/' + this.license + '.txt', 'LICENSE.txt', context);
+    },
+
+    readmeFiles: function() {
+      var context = {
+        name: this.fullName,
+        user: this.gitHubUserName,
+        repo: this.gitHubRepoName,
+        year: this.year,
+        coverall: this.isCoverallsEnabled,
+        travis: this.isTravisEnabled
+      };
+      this.template('_README.md', 'README.md', context);
+    },
   },
 
   install: function() {
