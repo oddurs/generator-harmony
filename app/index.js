@@ -9,7 +9,7 @@ var util = require('util');
 
 module.exports = yeoman.generators.Base.extend({
 
-  constructor: function () {
+  constructor: function() {
     yeoman.generators.Base.apply(this, arguments);
 
     this.option('test-framework', {
@@ -39,7 +39,7 @@ module.exports = yeoman.generators.Base.extend({
 
     // Yeoman greeting
     this.log(yosay(
-      'Welcome to the exceptional' + chalk.red('Bedrock') + ' generator!'
+      'Welcome to the exceptional ' + chalk.red('Bedrock') + ' generator!'
     ));
   },
 
@@ -117,13 +117,9 @@ module.exports = yeoman.generators.Base.extend({
     }];
 
     this.prompt(prompts, function(props) {
-      var filename = props.license + '.txt';
-
-      // data for template
-      this.fullName = props.fullName;
       this.year = (new Date()).getFullYear();
+      this.license = props.license;
 
-      this.template(filename, 'LICENSE');
       done();
     }.bind(this));
   },
@@ -152,7 +148,11 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     licenseFiles: function() {
-      console.log('=============');
+      var context = {
+        name: this.fullName,
+        year: this.year
+      }
+      this.template(this.license + '.txt', 'LICENSE.txt', context);
     }
   },
 
