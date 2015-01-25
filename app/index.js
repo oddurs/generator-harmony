@@ -1,11 +1,12 @@
 'use strict';
 
 // Requires
-var yeoman = require('yeoman-generator');
-var chalk  = require('chalk');
-var yosay  = require('yosay');
-var path   = require('path');
-var util   = require('util');
+var yeoman    = require('yeoman-generator');
+var chalk     = require('chalk');
+var yosay     = require('yosay');
+var path      = require('path');
+var util      = require('util');
+var shelljs   = require('shelljs');
 
 
 module.exports = yeoman.generators.Base.extend({
@@ -36,12 +37,20 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   initializing: function() {
+    var done = this.async();
+
     this.pkg = require('../package.json');
 
     // Yeoman greeting
     this.log(yosay(
       'Welcome to the exceptional ' + chalk.red('Bedrock') + ' generator!'
     ));
+
+    this.gitInfo = {
+      name: shelljs.exec('git config user.name', {silent: true}).output.replace(/\n/g, ''),
+      email: shelljs.exec('git config user.email', {silent: true}).output.replace(/\n/g, '')
+    }
+    done();
   },
 
   userPrompt: function() {
@@ -50,31 +59,41 @@ module.exports = yeoman.generators.Base.extend({
     // Prompts for User and Repo
     var prompts = [{
       type    : 'input',
+      name    : 'user',
+      message : 'What is your GitHub user name?',
+      default : ''
+    }];
+
+    this.prompt(prompts, function(props) {
+      this.user = props.user;
+      done();
+    }.bind(this));
+  },
+
+  userConfirmationPrompt: function () {
+    var done = this.async();
+
+    var prompts = [{
+      type    : 'input',
       name    : 'name',
       message : 'What is your full name?',
-      default : 'John Smith'
-    }, {
-      type    : 'input',
-      name    : 'gitHubUserName',
-      message : 'What is your GitHub user name?',
-      default : 'user'
+      default : this.gitInfo.name
     }, {
       type    : 'input',
       name    : 'email',
       message : 'What is your email?',
-      default : 'name@company.com'
+      default : this.gitInfo.email
     }, {
       type    : 'input',
-      name    : 'gitHubRepoName',
+      name    : 'repo',
       message : 'What is the name of your GitHub repo?',
       default : 'project'
     }];
 
     this.prompt(prompts, function(props) {
       this.name  = props.name;
-      this.user  = props.user;
-      this.repo  = props.repo;
       this.email = props.email;
+      this.repo  = props.repo;
       done();
     }.bind(this));
   },
@@ -132,23 +151,13 @@ module.exports = yeoman.generators.Base.extend({
             return licenses[i].name;
           }
         }
+        return "Unlicensed";
       }
       done();
     }.bind(this));
   },
 
   writing: {
-    app: function() {
-      this.fs.copy(
-        this.templatePath('_package.json'),
-        this.destinationPath('package.json')
-      );
-      this.fs.copy(
-        this.templatePath('_bower.json'),
-        this.destinationPath('bower.json')
-      );
-    },
-
     projectfiles: function() {
       this.fs.copy(
         this.templatePath('_editorconfig'),
@@ -183,12 +192,6 @@ module.exports = yeoman.generators.Base.extend({
 
       // Generate contribution guide
       this.template('_CONTRIBUTING.md', 'CONTRIBUTING.md', context);
-    },
-  },
-
-  install: function() {
-    this.installDependencies({
-      skipInstall : this.options['skip-install']
-    });
+    }
   }
 });
