@@ -76,12 +76,7 @@ module.exports = yeoman.generators.Base.extend({
     // List of possible licenses
     var licenses = [
       { name: 'Apache 2.0', value: 'apache' },
-      { name: 'MIT', value: 'mit' },
-      { name: 'Unlicense', value: 'unlicense' },
-      { name: 'FreeBSD', value: 'freebsd' },
-      { name: 'NewBSD', value: 'newbsd' },
-      { name: 'Internet Systems Consortium (ISC)', value: 'isc' },
-      { name: 'No License (Copyrighted)', value: 'nolicense' }
+      { name: 'MIT', value: 'mit' }
     ];
 
     // // Prompts for licenses
