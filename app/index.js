@@ -2,10 +2,11 @@
 
 // Requires
 var yeoman = require('yeoman-generator');
-var chalk = require('chalk');
-var yosay = require('yosay');
-var path = require('path');
-var util = require('util');
+var chalk  = require('chalk');
+var yosay  = require('yosay');
+var path   = require('path');
+var util   = require('util');
+
 
 module.exports = yeoman.generators.Base.extend({
 
@@ -13,24 +14,24 @@ module.exports = yeoman.generators.Base.extend({
     yeoman.generators.Base.apply(this, arguments);
 
     this.option('test-framework', {
-      desc: 'Test framework to be invoked',
-      type: String,
-      defaults: 'mocha'
+      desc     : 'Test framework to be invoked',
+      type     : String,
+      defaults : 'mocha'
     });
 
     this.option('skip-welcome-message', {
-      desc: 'Skips the welcome message',
-      type: Boolean
+      desc : 'Skips the welcome message',
+      type : Boolean
     });
 
     this.option('skip-install', {
-      desc: 'Skips the installation of dependencies',
-      type: Boolean
+      desc : 'Skips the installation of dependencies',
+      type : Boolean
     });
 
     this.option('skip-install-message', {
-      desc: 'Skips the message after the installation of dependencies',
-      type: Boolean
+      desc : 'Skips the message after the installation of dependencies',
+      type : Boolean
     });
   },
 
@@ -48,26 +49,32 @@ module.exports = yeoman.generators.Base.extend({
 
     // Prompts for User and Repo
     var prompts = [{
-      type: 'input',
-      name: 'fullName',
-      message: 'What is your full name?',
-      default: 'John Smith'
+      type    : 'input',
+      name    : 'fullName',
+      message : 'What is your full name?',
+      default : 'John Smith'
     }, {
-      type: 'input',
-      name: 'gitHubUserName',
-      message: 'What is your GitHub user name?',
-      default: 'user'
+      type    : 'input',
+      name    : 'gitHubUserName',
+      message : 'What is your GitHub user name?',
+      default : 'user'
     }, {
-      type: 'input',
-      name: 'gitHubRepoName',
-      message: 'What is the name of your GitHub repo?',
-      default: 'project'
+      type    : 'input',
+      name    : 'email',
+      message : 'What is your email?',
+      default : 'name@company.com'
+    }, {
+      type    : 'input',
+      name    : 'gitHubRepoName',
+      message : 'What is the name of your GitHub repo?',
+      default : 'project'
     }];
 
     this.prompt(prompts, function(props) {
-      this.fullName = props.fullName;
+      this.fullName       = props.fullName;
       this.gitHubUserName = props.gitHubUserName;
       this.gitHubRepoName = props.gitHubRepoName;
+      this.email          = props.email;
       done();
     }.bind(this));
   },
@@ -77,20 +84,20 @@ module.exports = yeoman.generators.Base.extend({
 
     // // Prompts for badge integrations
     var prompts = [{
-      type: 'confirm',
-      name: 'isCoverallsEnabled',
-      message: 'Would you like to enable the Coveralls badge?',
-      default: true
+      type    : 'confirm',
+      name    : 'isCoverallsEnabled',
+      message : 'Would you like to enable the Coveralls badge?',
+      default : true
     }, {
-      type: 'confirm',
-      name: 'isTravisEnabled',
-      message: 'Would you like to enable the Travis badge?',
-      default: true
+      type    : 'confirm',
+      name    : 'isTravisEnabled',
+      message : 'Would you like to enable the Travis badge?',
+      default : true
     }];
 
     this.prompt(prompts, function(props) {
       this.isCoverallsEnabled = props.isCoverallsEnabled;
-      this.isTravisEnabled = props.isTravisEnabled;
+      this.isTravisEnabled    = props.isTravisEnabled;
 
       done();
     }.bind(this));
@@ -101,23 +108,23 @@ module.exports = yeoman.generators.Base.extend({
 
     // List of possible licenses
     var licenses = [{
-      name: 'Apache 2.0',
-      value: 'apache'
+      name  : 'Apache 2.0',
+      value : 'apache'
     }, {
-      name: 'MIT',
-      value: 'mit'
+      name  : 'MIT',
+      value : 'mit'
     }];
 
     // // Prompts for licenses
     var prompts = [{
-      type: 'list',
-      name: 'license',
-      message: 'What license do you want to use?:',
-      choices: licenses
+      type    : 'list',
+      name    : 'license',
+      message : 'What license do you want to use?:',
+      choices : licenses
     }];
 
     this.prompt(prompts, function(props) {
-      this.year = (new Date()).getFullYear();
+      this.year    = (new Date()).getFullYear();
       this.license = props.license;
 
       done();
@@ -145,24 +152,29 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('jshintrc'),
         this.destinationPath('.jshintrc')
       );
+      this.fs.copy(
+        this.templatePath('_CHANGELOG.md'),
+        this.destinationPath('CHANGELOG.md')
+      );
     },
 
     licenseFiles: function() {
       var context = {
-        name: this.fullName,
-        year: this.year
+        name : this.fullName,
+        year : this.year
       };
       this.template('licenses/' + this.license + '.txt', 'LICENSE.txt', context);
     },
 
     readmeFiles: function() {
       var context = {
-        name: this.fullName,
-        user: this.gitHubUserName,
-        repo: this.gitHubRepoName,
-        year: this.year,
-        coverall: this.isCoverallsEnabled,
-        travis: this.isTravisEnabled
+        name     : this.fullName,
+        user     : this.gitHubUserName,
+        repo     : this.gitHubRepoName,
+        year     : this.year,
+        coverall : this.isCoverallsEnabled,
+        travis   : this.isTravisEnabled,
+        license  : this.license
       };
       this.template('_README.md', 'README.md', context);
     },
@@ -170,7 +182,7 @@ module.exports = yeoman.generators.Base.extend({
 
   install: function() {
     this.installDependencies({
-      skipInstall: this.options['skip-install']
+      skipInstall : this.options['skip-install']
     });
   }
 });

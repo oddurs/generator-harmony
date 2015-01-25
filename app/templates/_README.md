@@ -2,34 +2,46 @@
 
 > This is a short description of your project. It should be short, concise and easy to understand.
 
+## Table of Contents
+
+* [Installation](#installation)
+* [Usage](#usage)
+* [Options](#options)
+* [Example](#example)
+* [Example Output](#example-output)
+* [Building and Testing](#building-and-testing)
+* [Contributing](#contributing)
+* [Legal](#legal)
+* [Release History](#release-history)
+
 ## Installation
-[[Back To Top]](#jump-to-section)
+[[Back To Top]](#table-of-contents)
 
 - via npm
 
 ```shell
-npm install coffee-init
+npm install <%= repo %>
 ```
 
 - Manually
 
 ```shell
-git clone git://github.com/nox/coffee-init.git
+git clone git://github.com/<%= user %>/<%= repo %>.git
 ```
 
 ## Usage
-[[Back To Top]](#jump-to-section)
+[[Back To Top]](#table-of-contents)
 
 ```javascript
-var coffee_init = require('coffee-init');
-coffee_init.awesome(); // "awesome"
+var <%= repo %> = require('<%= repo %>');
+<%= repo %>.awesome(); // "awesome"
 ```
 
 If the output's line is more than the maximum bytes, then the rest of the characters will be treated as if it's in the next line. Meaning that you can find a very long line split into two in the `output` array key. Right now the max char limit is `16384` bytes.
 
 
 ## Options
-[[Back To Top]](#jump-to-section)
+[[Back To Top]](#table-of-contents)
 
 - `chained`: `bool`
 
@@ -40,7 +52,7 @@ If the output's line is more than the maximum bytes, then the rest of the charac
   `returnOutput` is also `true` by default. This is what returns the output in an array, parsing them line by line. I supply with this option because sometimes you might run a command that only returns server's IP address or sometimes you can run a command that just outputs very long lines and a very long text. I added the ability to opt out so that when unnecessary you might set it to false.
 
 ## Example
-[[Back To Top]](#jump-to-section)
+[[Back To Top]](#table-of-contents)
 
 ```js
 //require the extension/module/wtv
@@ -64,7 +76,7 @@ var regular = Array("ls","echo \"Works\"", "ls -lart");
 ```
 
 ## Example Output
-[[Back To Top]](#jump-to-section)
+[[Back To Top]](#table-of-contents)
 
 That example outputs something long like this:
 
@@ -75,7 +87,7 @@ Coming Soon
 
 
 ## Building and Testing
-[[Back To Top]](#jump-to-section)
+[[Back To Top]](#table-of-contents)
 
 I have packaged a `Makefile`, `Gruntfile` for building and testing, and `npm` scripts point to those.
 
@@ -94,13 +106,13 @@ Available commands are:
   This is for unit testing. 
 
 ## Legal
-[[Back To Top]](#jump-to-section)
+[[Back To Top]](#table-of-contents)
 
-Copyright © 2013 aponxi <aponxi@weaponxi.com>
+Copyright Â© <%= year %> <%= user %> <aponxi@weaponxi.com>
 
-This software is licensed under [MIT License](http://aponxi.mit-license.org/).
+This software is licensed under [<%= license %>](/LICENSE.txt).
 
 ## Release History
-[[Back To Top]](#jump-to-section)
+[[Back To Top]](#table-of-contents)
 
-You can find [all the changelogs here](/test/changelogs).
+You can find [all the changelogs here](/CHANGELOGS.md).
