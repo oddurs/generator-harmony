@@ -1,7 +1,7 @@
 {
   "name": "generator-bedrock",
   "version": "0.0.1",
-  "description": "Yeoman generator for laying a foundation for a GitHub repository",
+  "description": "Yeoman generator for laying the foundation for a GitHub repository",
   "license": "MIT",
   "main": "app/index.js",
   "repository": "oddurs/generator-bedrock",

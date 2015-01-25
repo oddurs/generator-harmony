@@ -1,15 +1,14 @@
 # generator-bedrock
 
-> Yeoman generator for laying a foundation for a GitHub repository
+> Yeoman generator for laying the foundation for a GitHub repository
 
 ## Table of Contents
 
 * [Installation](#installation)
 * [Usage](#usage)
 * [Options](#options)
-* [Example](#example)
 * [Example Output](#example-output)
-* [Building and Testing](#building-and-testing)
+* [Building and Testing](#testing)
 * [Contributing](#contributing)
 * [Legal](#legal)
 * [Release History](#release-history)
@@ -51,29 +50,6 @@ yo angular-fullstack [app-name]
 
   `returnOutput` is also `true` by default. This is what returns the output in an array, parsing them line by line. I supply with this option because sometimes you might run a command that only returns server's IP address or sometimes you can run a command that just outputs very long lines and a very long text. I added the ability to opt out so that when unnecessary you might set it to false.
 
-## Example
-[[Back To Top]](#table-of-contents)
-
-```js
-//require the extension/module/wtv
-var execxi = require("execxi");
-
-// I just defined some commands here
-// These will run for a long time. So you can see that outputs are occurring in real-time.
-var long_commands = ["find ~/"];
-// These are just some shell scripts that exit with different exit codes
-// one exits with 0, other exists with 1, and lastly 2.
-var exit_codes = ["./tests/exit_0.sh","./tests/exit_1.sh","./tests/exit_2.sh"];
-// this is non existent command to see what happens when it doesn't find the command to run.
-// returns 127 exit code.
-var non_existent = ["./tests/sadf.sh"];
-// this is just a command that echoes one line, 5000 bytes.
-var long_text = ["./tests/echo_bytes_5000.sh"];
-// some regular commands that run successfully
-var regular = Array("ls","echo \"Works\"", "ls -lart");
-
-
-```
 
 ## Example Output
 [[Back To Top]](#table-of-contents)
@@ -81,12 +57,19 @@ var regular = Array("ls","echo \"Works\"", "ls -lart");
 That example outputs something long like this:
 
 ```
-Some Output
-Coming Soon
+├── .editorconfig
+├── .gitattributes
+├── .gitignore
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── LICENSE.txt
+└── README.md
 ```
 
+See an example project.
 
-## Building and Testing
+
+## Testing
 [[Back To Top]](#table-of-contents)
 
 I have packaged a `Makefile`, `Gruntfile` for building and testing, and `npm` scripts point to those.
@@ -108,9 +91,9 @@ Available commands are:
 ## Legal
 [[Back To Top]](#table-of-contents)
 
-Copyright Â© <%= year %> <%= user %> <aponxi@weaponxi.com>
+Copyright © 2015 Oddur Sigurdsson <oddurs@gmail.com>
 
-This software is licensed under [<%= license %>](/LICENSE.txt).
+This software is licensed under the [MIT License](/LICENSE.txt).
 
 ## Release History
 [[Back To Top]](#table-of-contents)
