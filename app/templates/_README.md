@@ -118,6 +118,6 @@ You can find [all the changelogs here](/CHANGELOGS.md).
 ## Contributors
 [[Back To Top]](#table-of-contents)
 
-- [<%= name %>](http://github.com/<%= user %>) <<%= email %>>
+- [<%= name %>](http://github.com/<%= user %>)
 
 If you want to contribute to this project, please see the [contribution page](/CONTRIBUTING.md).

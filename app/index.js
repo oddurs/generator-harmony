@@ -43,7 +43,7 @@ module.exports = yeoman.generators.Base.extend({
 
     // Yeoman greeting
     this.log(yosay(
-      'Welcome to the exceptional ' + chalk.red('Bedrock') + ' generator!'
+      'Welcome to the exceptional ' + chalk.red('Harmony') + ' generator!'
     ));
 
     this.gitInfo = {
@@ -55,6 +55,8 @@ module.exports = yeoman.generators.Base.extend({
 
   userPrompt: function() {
     var done = this.async();
+
+    this.log('\nPersonal Information\n');
 
     // Prompts for User and Repo
     var prompts = [{
@@ -101,6 +103,8 @@ module.exports = yeoman.generators.Base.extend({
   integrationsPrompt: function() {
     var done = this.async();
 
+    this.log('\nProject Integrations\n');
+
     // // Prompts for badge integrations
     var prompts = [{
       type    : 'confirm',
@@ -124,6 +128,8 @@ module.exports = yeoman.generators.Base.extend({
 
   licensePrompt: function() {
     var done = this.async();
+
+    this.log('\nLicensing Information\n');
 
     // List of possible licenses
     var licenses = [{
@@ -170,6 +176,10 @@ module.exports = yeoman.generators.Base.extend({
       this.fs.copy(
         this.templatePath('_CHANGELOG.md'),
         this.destinationPath('CHANGELOG.md')
+      );
+      this.fs.copy(
+        this.templatePath('_CONTRIBUTING.md'),
+        this.destinationPath('CONTRIBUTING.md')
       );
     },
 

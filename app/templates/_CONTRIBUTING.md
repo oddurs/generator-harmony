@@ -11,7 +11,7 @@ patches and features.
 
 ## Using the issue tracker
 
-The [issue tracker](<%= config.issues %>) is the preferred channel for [bug reports](#bug-reports),
+The [issue tracker](https://github.com/<%= user %>/<%= repo %>/issues) is the preferred channel for [bug reports](#bug-reports),
 [features requests](#feature-requests) and [submitting pull requests](#pull-requests), 
 but please respect the following restrictions:
 
@@ -96,7 +96,7 @@ project:
    # Navigate to the newly cloned directory
    cd <repo-name>
    # Assign the original repo to a remote called "upstream"
-   git remote add upstream <%= config.repository %>
+   git remote add upstream <%= repo %>
    ```
 
 2. If you cloned a while ago, get the latest changes from upstream:

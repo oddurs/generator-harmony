@@ -1,4 +1,4 @@
-# generator-bedrock
+# generator-harmony
 
 > Yeoman generator for laying the foundation for a GitHub repository
 
@@ -91,7 +91,7 @@ Available commands are:
 ## Legal
 [[Back To Top]](#table-of-contents)
 
-Copyright © 2015 Oddur Sigurdsson <oddurs@gmail.com>
+Copyright © 2015 [Oddur Sigurdsson](oddurs@gmail.com).
 
 This software is licensed under the [MIT License](/LICENSE.txt).
 
