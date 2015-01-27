@@ -1,6 +1,6 @@
 # <%= repo %> 
 
-> This is a short description of your project. It should be short, concise and easy to understand.
+> <%= description %>
 
 ## Table of Contents
 

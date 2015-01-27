@@ -90,12 +90,18 @@ module.exports = yeoman.generators.Base.extend({
       name    : 'repo',
       message : 'What is the name of your GitHub repo?',
       default : 'project'
+    }, {
+      type    : 'input',
+      name    : 'description',
+      message : 'Give a short description about your project',
+      default : ''
     }];
 
     this.prompt(prompts, function(props) {
-      this.name  = props.name;
-      this.email = props.email;
-      this.repo  = props.repo;
+      this.name        = props.name;
+      this.email       = props.email;
+      this.repo        = props.repo;
+      this.description = props.description;
       done();
     }.bind(this));
   },
@@ -133,11 +139,35 @@ module.exports = yeoman.generators.Base.extend({
 
     // List of possible licenses
     var licenses = [{
-      name  : 'Apache 2.0',
+      name  : 'Apache 2.0 License',
       value : 'apache'
     }, {
-      name  : 'MIT',
+      name  : 'MIT License',
       value : 'mit'
+    }, {
+      name  : 'Unlicense',
+      value : 'unlicense'
+    }, {
+      name  : 'Academic Free License ("AFL") v. 3.0',
+      value : 'afl3'
+    }, {
+      name  : 'New BSD License',
+      value : 'bsd3'
+    }, {
+      name  : 'Simplified BSD License',
+      value : 'bsd2'
+    }, {
+      name  : 'Open Software License v. 3.0',
+      value : 'osl3'
+    }, {
+      name  : 'NewBSD',
+      value : 'newbsd'
+    }, {
+      name  : 'Internet Systems Consortium (ISC)',
+      value : 'isc'
+    }, {
+      name  : 'No License (Copyrighted)',
+      value : 'nolicense'
     }];
 
     // // Prompts for licenses
@@ -188,6 +218,7 @@ module.exports = yeoman.generators.Base.extend({
         name        : this.name,
         user        : this.user,
         repo        : this.repo,
+        description : this.description,
         year        : this.year,
         coverall    : this.coverall,
         travis      : this.travis,
