@@ -7,6 +7,7 @@ var yosay     = require('yosay');
 var path      = require('path');
 var util      = require('util');
 var shelljs   = require('shelljs');
+// var licenses  = require('./licenses.js');
 
 
 module.exports = yeoman.generators.Base.extend({
@@ -139,35 +140,71 @@ module.exports = yeoman.generators.Base.extend({
 
     // List of possible licenses
     var licenses = [{
-      name  : 'Apache 2.0 License',
+      name  : 'Academic Free License (v3)',
+      value : 'afl3'
+    }, {
+      name  : 'Apache License (v2)',
       value : 'apache'
+    }, {
+      name  : 'FreeBSD (2-clause)',
+      value : 'bsd2'
+    }, {
+      name  : 'BSD New (3-clause)',
+      value : 'bsd3'
+    }, {
+      name  : 'Creative Commons (Attribution)',
+      value : 'ccby4'
+    }, {
+      name  : 'Creative Commons (Attribution-NonCommercial)',
+      value : 'ccbync4'
+    }, {
+      name  : 'Creative Commons (Attribution-NonCommercial-ShareAlike)',
+      value : 'ccbyncsa4'
+    }, {
+      name  : 'Creative Commons (Attribution-ShareAlike)',
+      value : 'ccbysa4'
+    }, {
+      name  : 'Creative Commons Zero/Public Domain',
+      value : 'cczero1'
+    }, {
+      name  : 'GNU General Public License Version 1',
+      value : 'gpl1'
+    }, {
+      name  : 'GNU General Public License Version 2',
+      value : 'gpl2'
+    }, {
+      name  : 'GNU General Public License Version 3',
+      value : 'gpl3'
+    }, {
+      name  : 'ISC License',
+      value : 'isc'
+    }, {
+      name  : 'GNU Lesser General Public License Version 2.1',
+      value : 'lgpl21'
+    }, {
+      name  : 'GNU Lesser General Public License Version 3',
+      value : 'lgpl3'
     }, {
       name  : 'MIT License',
       value : 'mit'
     }, {
-      name  : 'Unlicense',
-      value : 'unlicense'
-    }, {
-      name  : 'Academic Free License ("AFL") v. 3.0',
-      value : 'afl3'
-    }, {
-      name  : 'New BSD License',
-      value : 'bsd3'
-    }, {
-      name  : 'Simplified BSD License',
-      value : 'bsd2'
-    }, {
-      name  : 'Open Software License v. 3.0',
-      value : 'osl3'
-    }, {
-      name  : 'NewBSD',
-      value : 'newbsd'
-    }, {
-      name  : 'Internet Systems Consortium (ISC)',
-      value : 'isc'
+      name  : 'Mozilla Public License',
+      value : 'moz'
     }, {
       name  : 'No License (Copyrighted)',
       value : 'nolicense'
+    }, {
+      name  : 'The Open Software License 3.0',
+      value : 'osl3'
+    }, {
+      name  : 'Public Domain (Unlicense)',
+      value : 'unlicense'
+    }, {
+      name  : 'WTFPL',
+      value : 'wtfpl2'
+    }, {
+      name  : 'zlib License',
+      value : 'zlib'
     }];
 
     // // Prompts for licenses
